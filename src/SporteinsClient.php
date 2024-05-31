@@ -6,9 +6,11 @@ use developermarius\sporteins\publicapi\models\SporteinsCompetitionType;
 use developermarius\sporteins\publicapi\models\SporteinsGameplanElementType;
 use developermarius\sporteins\publicapi\models\SporteinsGameplanElement;
 use developermarius\sporteins\publicapi\models\SporteinsGameplansResponse;
+use developermarius\sporteins\publicapi\models\SporteinsMatch;
 use developermarius\sporteins\publicapi\models\SporteinsMatchesResponse;
 use developermarius\sporteins\publicapi\models\SporteinsSportIdentifier;
 use developermarius\sporteins\publicapi\models\SporteinsSeasonsResponse;
+use developermarius\sporteins\publicapi\models\SporteinsTickerResponse;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
@@ -57,7 +59,7 @@ class SporteinsClient{
         return new SporteinsGameplansResponse(json_decode($response->getBody(), true));
     }
 
-    public function getMatches(SporteinsSportIdentifier $sport, SporteinsCompetitionType $competition, string $season, SporteinsGameplanElement $game_plan){
+    public function getMatches(SporteinsSportIdentifier $sport, SporteinsCompetitionType $competition, string $season, SporteinsGameplanElement $game_plan): SporteinsMatchesResponse{
         $url = '/v2/de/' . strtolower($sport->name) . '/competition/' . $competition->value . '/season/' . $season;
         switch($game_plan->getType()){
             case SporteinsGameplanElementType::LEAGUE:
@@ -84,14 +86,17 @@ class SporteinsClient{
         return new SporteinsMatchesResponse($data);
     }
 
-    public function getMatch(SporteinsSportIdentifier $sport, string $match){
+    /**
+     * Warning: This function is very unstable because not every game has and endpoint detailed information and the endpoints in general differ from sport to sport and from competition to competition
+     */
+    public function getMatch(SporteinsSportIdentifier $sport, string $match): SporteinsMatch|SporteinsTickerResponse{
         //https://api.sport1.info/v2/de/handball/match/sr:match:42307993
         if($sport === SporteinsSportIdentifier::SOCCER){
             $response = $this->getHttpClient()->request('GET', '/v2/de/' . strtolower($sport->name) . '/ticker/' . $match);
-            return json_decode($response->getBody(), true);
+            return new SporteinsTickerResponse(json_decode($response->getBody(), true));
         }else{
             $response = $this->getHttpClient()->request('GET', '/v2/de/' . strtolower($sport->name) . '/match/' . $match);
-            return json_decode($response->getBody(), true)['gameplan'];
+            return new SporteinsMatch(json_decode($response->getBody(), true));
         }
     }
 
