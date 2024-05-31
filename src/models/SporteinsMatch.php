@@ -7,7 +7,7 @@ use utils\Time;
 
 /**
  * @method string getId()
- * @method SporteinsGameplaneElementType getMatchType()
+ * @method SporteinsGameplanElementType getMatchType()
  * @method Time|null getActualStartTime()
  * @method string getScheduledStartTime()
  * @method bool getDateTbd()
@@ -40,7 +40,7 @@ use utils\Time;
 class SporteinsMatch extends DataClass{
 
     protected string $id;
-    protected SporteinsGameplaneElementType $match_type;
+    protected SporteinsGameplanElementType $match_type;
     protected ?Time $actual_start_time = null;
     protected Time $scheduled_start_time;
     protected bool $date_tbd;
@@ -77,7 +77,7 @@ class SporteinsMatch extends DataClass{
         if(isset($data['matchInfo']) && sizeof($data['matchInfo']) === 0)
             $data['matchInfo'] = null;
         $this->setProperties($data, array(
-            'match_type' => SporteinsGameplaneElementType::class,
+            'match_type' => SporteinsGameplanElementType::class,
             'actual_start_time' => Time::class,
             'scheduled_start_time' => Time::class,
             'period' => SporteinsMatchPeriodType::class,

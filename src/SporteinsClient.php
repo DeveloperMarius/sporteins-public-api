@@ -3,7 +3,7 @@
 namespace developermarius\sporteins\publicapi;
 
 use developermarius\sporteins\publicapi\models\SporteinsCompetitionType;
-use developermarius\sporteins\publicapi\models\SporteinsGameplaneElementType;
+use developermarius\sporteins\publicapi\models\SporteinsGameplanElementType;
 use developermarius\sporteins\publicapi\models\SporteinsGameplanElement;
 use developermarius\sporteins\publicapi\models\SporteinsGameplansResponse;
 use developermarius\sporteins\publicapi\models\SporteinsMatchesResponse;
@@ -60,11 +60,11 @@ class SporteinsClient{
     public function getMatches(SporteinsSportIdentifier $sport, SporteinsCompetitionType $competition, string $season, SporteinsGameplanElement $game_plan){
         $url = '/v2/de/' . strtolower($sport->name) . '/competition/' . $competition->value . '/season/' . $season;
         switch($game_plan->getType()){
-            case SporteinsGameplaneElementType::LEAGUE:
+            case SporteinsGameplanElementType::LEAGUE:
                 ///round/31/gameplan/competitionMatches/phase/PHASE_REGULAR_SEASON
                 $url .= '/round/' . $game_plan->getRoundNumber() . '/gameplan/competitionMatches/phase/' . $game_plan->getPhase()->getName()->name;
                 break;
-            case SporteinsGameplaneElementType::CUP:
+            case SporteinsGameplanElementType::CUP:
                 ///roundType/SEMI_FINALS/gameplan/playoffMatches/playDown/false
                 $url .= '/roundType/' . $game_plan->getRoundType()->name . '/gameplan';
                 if($game_plan->isPlayoff()){

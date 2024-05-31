@@ -2,7 +2,7 @@
 
 namespace developermarius\sporteins\publicapi\models;
 
-enum SporteinsGameplaneElementType: string implements \JsonSerializable{
+enum SporteinsGameplanElementType: string implements \JsonSerializable{
 
     case LEAGUE = 'league';
     case CUP = 'cup';

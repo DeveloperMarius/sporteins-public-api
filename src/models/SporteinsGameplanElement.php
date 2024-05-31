@@ -13,7 +13,7 @@ use utils\Time;
  * @method int|null getMatchDay()
  * @method SporteinsRoundType|null getRoundType()
  * @method string getRoundTitle()
- * @method SporteinsGameplaneElementType|null getType()
+ * @method SporteinsGameplanElementType|null getType()
  * @method SporteinsPhase|null getPhase()
  * @method bool|null isPlayoff()
  * @method bool|null isPlayDown()
@@ -32,7 +32,7 @@ class SporteinsGameplanElement extends DataClass{
     protected ?int $match_day = null;
     protected ?SporteinsRoundType $round_type = null;
     protected string $round_title;
-    protected ?SporteinsGameplaneElementType $type = null;
+    protected ?SporteinsGameplanElementType $type = null;
     protected ?SporteinsPhase $phase = null;
     protected ?bool $playoff = null;
     protected ?bool $play_down = null;
@@ -46,7 +46,7 @@ class SporteinsGameplanElement extends DataClass{
             'from_date' => Time::class,
             'to_date' => Time::class,
             'round_type' => SporteinsRoundType::class,
-            'type' => SporteinsGameplaneElementType::class,
+            'type' => SporteinsGameplanElementType::class,
             'phase' => SporteinsPhase::class
         ), array(
             'groupName' => 'group_name',
