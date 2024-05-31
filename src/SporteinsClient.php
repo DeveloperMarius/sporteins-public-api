@@ -15,7 +15,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Psr\Http\Message\RequestInterface;
 
-class SportEinsClient{
+class SporteinsClient{
 
     private ?Client $http_client = null;
     private static array $user_agents = array(
@@ -31,7 +31,7 @@ class SportEinsClient{
             $stack = new HandlerStack();
             $stack->setHandler(new CurlHandler());
             $stack->push(Middleware::mapRequest(function(RequestInterface $request) {
-                $request = $request->withHeader('User-Agent', SportEinsClient::$user_agents[array_rand(SportEinsClient::$user_agents)]);
+                $request = $request->withHeader('User-Agent', SporteinsClient::$user_agents[array_rand(SporteinsClient::$user_agents)]);
                 return $request;
             }));
             $this->http_client = new Client(array(
