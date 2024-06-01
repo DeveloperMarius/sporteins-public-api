@@ -25,7 +25,7 @@ class SporteinsVenue extends DataClass{
     protected ?string $country_code = null;
     protected ?SporteinsNationality $nationality = null;
     protected int $capacity;
-    protected ?string $map_coordinates;
+    protected ?string $map_coordinates = null;
 
     public function __construct(array $data){
         $this->setProperties($data, array(
