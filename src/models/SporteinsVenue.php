@@ -5,18 +5,15 @@ namespace developermarius\sporteins\publicapi\models;
 use utils\DataClass;
 
 /**
- * "id": "sr:venue:7046",
- * "venueName": "Palacio de Deportes de Murcia",
- * "name": "Palacio de Deportes de Murcia",
- * "city": "Murcia",
- * "country": "Spain",
- * "countryCode": "ESP",
- * "nationality": {
- * "name": "Spain",
- * "imageUrl": "https:\/\/reshape.sport1.de\/c\/s\/flags\/esp\/0x200"
- * },
- * "capacity": 7341,
- * "mapCoordinates": "37.994036,-1.112783"
+ * @method string getId()
+ * @method string getVenueName()
+ * @method string getName()
+ * @method string getCity()
+ * @method string|null getCountry()
+ * @method string|null getCountryCode()
+ * @method SporteinsNationality|null getNationality()
+ * @method int getCapacity()
+ * @method string|null getMapCoordinates()
  */
 class SporteinsVenue extends DataClass{
 
