@@ -19,7 +19,7 @@ use utils\Time;
  * @method SporteinsSport getSport()
  * @method SporteinsCompetitor getHomeTeam()
  * @method SporteinsCompetitor getAwayTeam()
- * @method SporteinsVenue getVenue()
+ * @method SporteinsVenue|null getVenue() - Is only null is Teams have a DummyName
  * @method SporteinsMatchAssetClientModel[]|null getMatchAssetClientModels()
  * @method SporteinsRoundType|null getRoundType()
  * @method int|null getMatchDay()
@@ -31,7 +31,7 @@ use utils\Time;
  * @method SporteinsCompetition getCompetition()
  * @method SporteinsSeason getSeason()
  * @method SporteinsRelatedMatch|null getRelatedMatch()
- * @method SporteinsMatchInfo getMatchInfo()
+ * @method SporteinsMatchInfo|null getMatchInfo()
  * @method bool hasTicker()
  * @method SporteinsPhase|null getPhase()
  * @method SporteinsMatchPeriod[]|null getPeriods()
@@ -52,7 +52,7 @@ class SporteinsMatch extends DataClass{
     protected SporteinsSport $sport;
     protected SporteinsCompetitor $home_team;
     protected SporteinsCompetitor $away_team;
-    protected SporteinsVenue $venue;
+    protected ?SporteinsVenue $venue = null;
     protected ?array $match_asset_client_models = null;
     protected ?SporteinsRoundType $round_type = null;
     protected ?int $match_day = null;
@@ -64,7 +64,7 @@ class SporteinsMatch extends DataClass{
     protected SporteinsCompetition $competition;
     protected SporteinsSeason $season;
     protected ?SporteinsRelatedMatch $related_match = null;
-    protected SporteinsMatchInfo $match_info;
+    protected ?SporteinsMatchInfo $match_info = null;
     protected bool $ticker;
     protected ?SporteinsPhase $phase = null;
     /** @var SporteinsMatchPeriod[]|null $periods */
