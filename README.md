@@ -4,6 +4,8 @@ This is a simple wrapper for the Sport1 Public Api. It is written in PHP and pro
 The Sport1 Public Api is a RESTful API that provides access to the Sport1 data like game information.  
 After I did some simple analysis on the Sport1 Public Api, I documented some components of the API in a gist. You can find the gist [here](https://gist.github.com/DeveloperMarius/9e117e254b49bc131cae98c9099734c6).
 
+> **Disclaimer** before using this client: please ensure that you have the permissions from the Website Owner.
+
 ## Installation
 
 To install this library, you need to have Composer installed on your system. If you don't have it installed, you can download it from [here](https://getcomposer.org/).
